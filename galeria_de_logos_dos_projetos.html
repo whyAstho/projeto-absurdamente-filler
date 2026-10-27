@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Logos dos Projetos SESI SENAI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding-top: 80px;
+            background-color: #f0f4f8;
+            font-family: Arial, sans-serif;
+        }
+        .faixa {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background-color: rgb(0, 94, 201);
+            color: white;
+            padding: 0 25px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+        }
+        .nav-btn {
+            outline: none !important;
+            border: none !important;
+            color: white;
+            font-weight: bold;
+            padding: 10px 20px;
+            margin-left: 15px;
+            cursor: pointer;
+            background: none;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+        }
+        .nav-btn:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        .titulop {
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 42px;
+            color: rgb(0, 94, 201);
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        
+        .fundo-p1 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            width: 100%;
+            max-width: 1350px;
+            margin: 0 auto;
+            padding: 20px;
+            justify-content: center;
+        }
+        
+        /* Estilos dos Cards (.card1 até .card10) */
+        .card1, .card2, .card3, .card4, .card5, 
+        .card6, .card7, .card8, .card9, .card10 {
+            background-color: rgb(0, 71, 151);
+            width: 320px;
+            min-height: 400px;
+            border-radius: 14px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            text-align: center;
+            user-select: none;
+            padding: 18px;
+            transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card1:hover, .card2:hover, .card3:hover, .card4:hover, .card5:hover,
+        .card6:hover, .card7:hover, .card8:hover, .card9:hover, .card10:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Estilos das Imagens/Containers (.fp1 até .fp10) */
+        .fp1, .fp2, .fp3, .fp4, .fp5,
+        .fp6, .fp7, .fp8, .fp9, .fp10 {
+            width: 100%;
+            height: 150px;
+            min-height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            background-color: #1a1c23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .tp {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 5px 0;
+        }
+        .dp {
+            color: #b0b3b8;
+            font-size: 13px;
+            line-height: 1.4;
+            flex-grow: 1;
+            margin-bottom: 15px;
+        }
+        .btn-download {
+            background-color: #00a8e8;
+            color: white;
+            padding: 9px 18px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background-color 0.2s, transform 0.1s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-download:hover {
+            background-color: #0086ba;
+            transform: translateY(-1px);
+        }
+        .btn-download:active {
+            transform: translateY(1px);
+        }
+        svg {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Faixa Topo -->
+    <header class="faixa">
+        <div style="font-size: 24px; font-weight: bold; letter-spacing: 1px;">MUNDO SESI SENAI</div>
+        <button class="nav-btn" onclick="scrollToSection('galeria')">Projetos</button>
+        <button class="nav-btn" onclick="downloadAllSVGs()">Baixar Todas</button>
+    </header>
+
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="titulop text-center mt-4">Logos dos 10 Projetos</h1>
+        <p class="text-center text-gray-600 mb-8 max-w-2xl mx-auto">
+            Todas as logos renderizadas em SVG vetorial de alta resolução, compatíveis com a estrutura CSS fornecida (<code class="bg-gray-200 px-2 py-1 rounded text-blue-800">.fp1</code> a <code class="bg-gray-200 px-2 py-1 rounded text-blue-800">.fp10</code>).
+        </p>
+
+        <!-- Grid de Cards dos 10 Projetos -->
+        <div class="fundo-p1" id="galeria">
+
+            <!-- 1. EduCash -->
+            <div class="card1">
+                <div class="fp1" id="logo-educash">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgEdu" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0284c7"/>
+                                <stop offset="100%" stop-color="#0369a1"/>
+                            </linearGradient>
+                            <linearGradient id="capGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#38bdf8"/>
+                                <stop offset="100%" stop-color="#0284c7"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgEdu)"/>
+                        
+                        <!-- Ícone Capelo + Carteira com $ -->
+                        <g transform="translate(15, 30)">
+                            <!-- Chapéu de Formatura (Capelo) -->
+                            <polygon points="35,10 70,25 35,40 0,25" fill="url(#capGrad)" stroke="#ffffff" stroke-width="2"/>
+                            <rect x="20" y="32" width="30" height="15" fill="#0284c7" stroke="#ffffff" stroke-width="2"/>
+                            <path d="M 65 26 V 48" stroke="#facc15" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="65" cy="50" r="3" fill="#facc15"/>
+                            
+                            <!-- Carteira -->
+                            <rect x="15" y="48" width="50" height="38" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+                            <path d="M 45 60 H 65 V 74 H 45 Z" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+                            <circle cx="53" cy="67" r="2.5" fill="#facc15"/>
+                            <!-- Símbolo do Cifrão $ -->
+                            <text x="32" y="74" fill="#38bdf8" font-family="Arial, sans-serif" font-weight="900" font-size="20" text-anchor="middle">$</text>
+                        </g>
+
+                        <!-- Texto EduCash -->
+                        <text x="98" y="65" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="28" letter-spacing="-0.5">Edu<tspan fill="#38bdf8">Cash</tspan></text>
+                        <!-- Subtítulo -->
+                        <text x="99" y="85" fill="#e0f2fe" font-family="Arial, sans-serif" font-weight="700" font-size="11">educação e gestão financeira.</text>
+                        <line x1="99" y1="94" x2="270" y2="94" stroke="#38bdf8" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <div class="tp">EduCash</div>
+                <div class="dp">Ensina a lidar com dinheiro na prática enquanto organiza, acompanha e compartilha as finanças.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-educash', 'logo-educash.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 2. Ment.IA -->
+            <div class="card2">
+                <div class="fp2" id="logo-mentia">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgMent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b0764"/>
+                                <stop offset="100%" stop-color="#581c87"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgMent)"/>
+                        
+                        <!-- Cérebro + Coração -->
+                        <g transform="translate(30, 35)">
+                            <path d="M 30 18 C 18 5 0 18 0 35 C 0 52 30 70 30 70 C 30 70 60 52 60 35 C 60 18 42 5 30 18 Z" fill="none" stroke="#c084fc" stroke-width="4.5" stroke-linecap="round"/>
+                            <!-- Giros do cérebro internos -->
+                            <path d="M 30 25 C 20 22 15 30 18 38 C 20 44 28 46 30 52" fill="none" stroke="#e9d5ff" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M 30 25 C 40 22 45 30 42 38 C 40 44 32 46 30 52" fill="none" stroke="#e9d5ff" stroke-width="3" stroke-linecap="round"/>
+                            <circle cx="30" cy="35" r="3" fill="#c084fc"/>
+                        </g>
+
+                        <text x="110" y="66" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="30" letter-spacing="0.5">Ment.<tspan fill="#c084fc">IA</tspan></text>
+                        <text x="110" y="88" fill="#e9d5ff" font-family="Arial, sans-serif" font-weight="800" font-size="11" letter-spacing="2">PSICOLOGIA DIGITAL</text>
+                    </svg>
+                </div>
+                <div class="tp">Ment.IA</div>
+                <div class="dp">Plataforma inteligente de psicologia digital para gerenciamento de consultas e saúde mental.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-mentia', 'logo-mentia.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 3. SafeWork -->
+            <div class="card3">
+                <div class="fp3" id="logo-safework">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgSafe" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0f172a"/>
+                                <stop offset="100%" stop-color="#1e293b"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgSafe)"/>
+                        
+                        <!-- Escudo com Capacete -->
+                        <g transform="translate(25, 30)">
+                            <path d="M 35 5 L 65 15 V 42 C 65 60 35 75 35 75 C 35 75 5 60 5 42 V 15 Z" fill="#eab308" opacity="0.15" stroke="#eab308" stroke-width="2"/>
+                            <!-- Capacete de Proteção -->
+                            <path d="M 17 46 C 17 26 53 26 53 46 Z" fill="#eab308"/>
+                            <rect x="12" y="46" width="46" height="7" fill="#ca8a04" rx="2"/>
+                            <path d="M 32 26 H 38 V 46 H 32 Z" fill="#fef08a"/>
+                        </g>
+
+                        <text x="98" y="66" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="26" letter-spacing="0.5">Safe<tspan fill="#eab308">Work</tspan></text>
+                        <text x="99" y="86" fill="#94a3b8" font-family="Arial, sans-serif" font-weight="800" font-size="10" letter-spacing="1.5">SEGURANÇA NO TRABALHO</text>
+                        
+                        <!-- Listra industrial -->
+                        <g transform="translate(99, 95)">
+                            <rect width="140" height="6" fill="#eab308" rx="3"/>
+                            <path d="M 10 0 L 20 6 H 10 Z M 30 0 L 40 6 H 30 Z M 50 0 L 60 6 H 50 Z M 70 0 L 80 6 H 70 Z M 90 0 L 100 6 H 90 Z M 110 0 L 120 6 H 110 Z" fill="#0f172a"/>
+                        </g>
+                    </svg>
+                </div>
+                <div class="tp">SafeWork</div>
+                <div class="dp">Sistema de prevenção de acidentes de trabalho e monitoramento de equipamentos de proteção.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-safework', 'logo-safework.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 4. SESI Conecta -->
+            <div class="card4">
+                <div class="fp4" id="logo-sesi-conecta">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgSesi" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0284c7"/>
+                                <stop offset="100%" stop-color="#0f172a"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgSesi)"/>
+                        
+                        <!-- Balão de conversa e nós de rede -->
+                        <g transform="translate(25, 40)">
+                            <rect x="0" y="0" width="50" height="40" rx="10" fill="#ffffff"/>
+                            <path d="M 12 40 L 5 50 L 22 40 Z" fill="#ffffff"/>
+                            <!-- Nós digitais -->
+                            <circle cx="15" cy="20" r="5" fill="#0284c7"/>
+                            <circle cx="35" cy="20" r="5" fill="#10b981"/>
+                            <path d="M 15 20 Q 25 8 35 20" fill="none" stroke="#38bdf8" stroke-width="2.5"/>
+                        </g>
+
+                        <text x="95" y="60" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="22">SESI</text>
+                        <text x="95" y="86" fill="#38bdf8" font-family="Arial, sans-serif" font-weight="900" font-size="24" letter-spacing="1">CONECTA</text>
+                        <text x="95" y="104" fill="#94a3b8" font-family="Arial, sans-serif" font-weight="700" font-size="10">REDE DE COMUNICAÇÃO INTERNA</text>
+                    </svg>
+                </div>
+                <div class="tp">SESI Conecta</div>
+                <div class="dp">Rede de comunicação institucional e integração de dados escolares em ambiente seguro.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-sesi-conecta', 'logo-sesi-conecta.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 5. Memória Escola -->
+            <div class="card5">
+                <div class="fp5" id="logo-memoria-escola">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgMem" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0369a1"/>
+                                <stop offset="100%" stop-color="#0d9488"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgMem)"/>
+                        
+                        <!-- Livro com Cérebro/Conexão -->
+                        <g transform="translate(25, 40)">
+                            <path d="M 5 50 Q 28 38 50 50 V 15 Q 28 3 5 15 Z" fill="#ffffff" opacity="0.95"/>
+                            <path d="M 50 50 Q 72 38 95 50 V 15 Q 72 3 50 15 Z" fill="#e0f2fe" opacity="0.95"/>
+                            <circle cx="28" cy="24" r="4" fill="#0369a1"/>
+                            <circle cx="72" cy="24" r="4" fill="#0d9488"/>
+                            <path d="M 28 24 Q 50 10 72 24" fill="none" stroke="#0284c7" stroke-width="2.5"/>
+                        </g>
+
+                        <text x="135" y="56" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="15" letter-spacing="1">PROJETO</text>
+                        <text x="135" y="78" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="20">MEMÓRIA</text>
+                        <text x="135" y="100" fill="#38bdf8" font-family="Arial, sans-serif" font-weight="900" font-size="22">ESCOLA</text>
+                    </svg>
+                </div>
+                <div class="tp">Memória Escola</div>
+                <div class="dp">Preservação do acervo pedagógico e registro histórico das realizações acadêmicas.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-memoria-escola', 'logo-memoria-escola.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 6. Visão Computacional -->
+            <div class="card6">
+                <div class="fp6" id="logo-visao-comp">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgVis" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#064e3b"/>
+                                <stop offset="100%" stop-color="#022c22"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgVis)"/>
+                        
+                        <!-- Mão com pontos e gamepad -->
+                        <g transform="translate(20, 35)">
+                            <!-- Mira de Retículo -->
+                            <circle cx="35" cy="40" r="30" fill="none" stroke="#10b981" stroke-width="1.5" stroke-dasharray="6 3"/>
+                            <!-- Gamepad minimalista -->
+                            <rect x="10" y="55" width="50" height="25" rx="6" fill="#047857" opacity="0.8"/>
+                            <circle cx="22" cy="67" r="3" fill="#a7f3d0"/>
+                            <circle cx="48" cy="67" r="3" fill="#34d399"/>
+                            <!-- Mão de rastreamento -->
+                            <path d="M 30 50 V 30 C 30 27 34 27 34 30 V 50 M 34 30 V 22 C 34 19 38 19 38 22 V 50 M 38 22 V 26 C 38 23 42 23 42 26 V 50" fill="none" stroke="#34d399" stroke-width="2.5" stroke-linecap="round"/>
+                        </g>
+
+                        <text x="95" y="52" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="15">VISÃO COMPUTACIONAL</text>
+                        <text x="95" y="74" fill="#34d399" font-family="Arial, sans-serif" font-weight="900" font-size="19">GAME CONTROL</text>
+                        <text x="95" y="94" fill="#a7f3d0" font-family="Arial, sans-serif" font-weight="700" font-size="10">RECONHECIMENTO DE GESTOS</text>
+                    </svg>
+                </div>
+                <div class="tp">Visão Computacional</div>
+                <div class="dp">Interface que converte gestos de mãos capturados por câmera em comandos de jogos.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-visao-comp', 'logo-visao-computacional.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 7. Braço Robótico com Arduino -->
+            <div class="card7">
+                <div class="fp7" id="logo-braco-robotico">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgRob" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#0a192f"/>
+                                <stop offset="100%" stop-color="#1e3a8a"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgRob)"/>
+                        
+                        <!-- Linhas de Circuito -->
+                        <path d="M 10 75 H 50 L 70 35 H 130 M 50 75 L 70 115 H 160" fill="none" stroke="#00f2fe" stroke-width="1.5" opacity="0.3"/>
+                        <circle cx="130" cy="35" r="3" fill="#00f2fe"/>
+                        <circle cx="160" cy="115" r="3" fill="#00f2fe"/>
+                        
+                        <!-- Garra Mecânica Robótica -->
+                        <g transform="translate(30, 42)" stroke="#00f2fe" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="15" y="45" width="20" height="12" fill="#00f2fe" opacity="0.8"/>
+                            <path d="M 25 45 V 25 L 10 10"/>
+                            <path d="M 25 25 L 40 10"/>
+                            <path d="M 10 10 C 0 10 0 25 10 25"/>
+                            <path d="M 40 10 C 50 10 50 25 40 25"/>
+                        </g>
+
+                        <text x="95" y="58" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="20">BRAÇO</text>
+                        <text x="95" y="80" fill="#00f2fe" font-family="Arial, sans-serif" font-weight="900" font-size="20">ROBÓTICO</text>
+                        <rect x="95" y="90" width="85" height="18" fill="#00f2fe" rx="4"/>
+                        <text x="137" y="103" fill="#0a192f" font-family="Arial, sans-serif" font-weight="900" font-size="11" text-anchor="middle">ARDUINO</text>
+                    </svg>
+                </div>
+                <div class="tp">Braço Robótico</div>
+                <div class="dp">Protótipo de braço mecatrônico programável com servomotores e controlador Arduino.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-braco-robotico', 'logo-braco-robotico.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 8. Globins: Heart of Ifit -->
+            <div class="card8">
+                <div class="fp8" id="logo-globins">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgGlo" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#142812"/>
+                                <stop offset="100%" stop-color="#071206"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgGlo)"/>
+                        
+                        <!-- Moldura Estilo Pixel Art -->
+                        <rect x="12" y="12" width="276" height="126" fill="none" stroke="#4ade80" stroke-width="2" stroke-dasharray="8 4" opacity="0.4"/>
+                        
+                        <!-- Livro Mágico & Coração Pixel Art -->
+                        <g transform="translate(30, 45)">
+                            <rect x="0" y="10" width="40" height="40" fill="#854d0e" rx="4"/>
+                            <rect x="5" y="5" width="40" height="40" fill="#ca8a04" rx="4"/>
+                            <path d="M18 20 Q25 10 32 20 Q32 30 25 35 Q18 30 18 20 Z" fill="#22c55e"/>
+                            <circle cx="25" cy="22" r="3" fill="#ccfbf1"/>
+                        </g>
+
+                        <!-- Tipografia Pixelada -->
+                        <text x="88" y="66" fill="#4ade80" font-family="'Courier New', monospace" font-weight="900" font-size="24" letter-spacing="1">GLOBINS:</text>
+                        <text x="88" y="88" fill="#fef08a" font-family="'Courier New', monospace" font-weight="700" font-size="15" letter-spacing="2">HEART OF IFIT</text>
+                        
+                        <!-- Partículas Mágicas -->
+                        <polygon points="260,35 263,41 269,44 263,47 260,53 257,47 251,44 257,41" fill="#4ade80"/>
+                        <polygon points="240,98 242,102 246,104 242,106 240,110 238,106 234,104 238,102" fill="#fef08a"/>
+                    </svg>
+                </div>
+                <div class="tp">Globins: Heart of Ifit</div>
+                <div class="dp">Jogo eletrônico 2D de fantasia e aventura em estética pixel art retrô.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-globins', 'logo-globins.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 9. Chernobyl: 40 Anos Depois -->
+            <div class="card9">
+                <div class="fp9" id="logo-chernobyl">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgChe" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#18181b"/>
+                                <stop offset="100%" stop-color="#27272a"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgChe)"/>
+                        
+                        <!-- Símbolo de Radiação Nuclear -->
+                        <g transform="translate(45, 75)">
+                            <circle cx="0" cy="0" r="10" fill="#facc15"/>
+                            <path d="M 0 0 L -12 -30 A 32 32 0 0 1 12 -30 Z" fill="#facc15"/>
+                            <path d="M 0 0 L 30 5 A 32 32 0 0 1 18 28 Z" fill="#facc15"/>
+                            <path d="M 0 0 L -18 28 A 32 32 0 0 1 -30 5 Z" fill="#facc15"/>
+                        </g>
+
+                        <text x="98" y="55" fill="#ef4444" font-family="Impact, sans-serif" font-size="24" letter-spacing="1">CHERNOBYL</text>
+                        <text x="98" y="78" fill="#facc15" font-family="Arial, sans-serif" font-weight="800" font-size="16">40 ANOS DEPOIS</text>
+                        <text x="98" y="98" fill="#a1a1aa" font-family="Arial, sans-serif" font-weight="700" font-size="9" letter-spacing="0.5">ANÁLISE DO ACIDENTE E IMPACTO</text>
+                    </svg>
+                </div>
+                <div class="tp">Chernobyl: 40 Anos</div>
+                <div class="dp">Estudo histórico, científico e infográfico sobre a usina e as consequências ambientais.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-chernobyl', 'logo-chernobyl.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+            <!-- 10. Gerenciamento de Tarefas -->
+            <div class="card10">
+                <div class="fp10" id="logo-tarefas">
+                    <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="bgTar" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#003366"/>
+                                <stop offset="100%" stop-color="#0066cc"/>
+                            </linearGradient>
+                            <linearGradient id="accTar" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#00d2ff"/>
+                                <stop offset="100%" stop-color="#0088ff"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#bgTar)"/>
+                        
+                        <!-- Checkmark Icon dentro do Círculo -->
+                        <g transform="translate(15, 5)">
+                            <circle cx="35" cy="70" r="32" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="8"/>
+                            <path d="M 18 70 L 30 83 L 56 50" fill="none" stroke="url(#accTar)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                        </g>
+
+                        <text x="95" y="66" fill="#ffffff" font-family="Arial, sans-serif" font-weight="900" font-size="18" letter-spacing="1">GESTÃO DE</text>
+                        <text x="95" y="90" fill="#00d2ff" font-family="Arial, sans-serif" font-weight="800" font-size="22" letter-spacing="2">TAREFAS</text>
+                        <rect x="95" y="98" width="140" height="3" fill="#00d2ff" rx="1.5"/>
+                    </svg>
+                </div>
+                <div class="tp">Gerenciamento de Tarefas</div>
+                <div class="dp">Aplicação para organização de fluxo de trabalho, tarefas diárias e aumento de produtividade.</div>
+                <button class="btn-download" onclick="downloadSVG('logo-tarefas', 'logo-tarefas.svg')">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Baixar SVG
+                </button>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Função universal para download do arquivo SVG individual
+        function downloadSVG(containerId, filename) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+            const svgElement = container.querySelector('svg');
+            if (!svgElement) return;
+
+            const serializer = new XMLSerializer();
+            let source = serializer.serializeToString(svgElement);
+            
+            if (!source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)) {
+                source = source.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+            }
+
+            const blob = new Blob([source], { type: 'image/svg+xml;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            
+            const element = document.createElement('a');
+            element.href = url;
+            element.download = filename;
+            document.body.appendChild(element);
+            element.click();
+            document.body.removeChild(element);
+            URL.revokeObjectURL(url);
+        }
+
+        // Função para baixar todas as logos em sequência
+        function downloadAllSVGs() {
+            const list = [
+                ['logo-educash', 'logo-educash.svg'],
+                ['logo-mentia', 'logo-mentia.svg'],
+                ['logo-safework', 'logo-safework.svg'],
+                ['logo-sesi-conecta', 'logo-sesi-conecta.svg'],
+                ['logo-memoria-escola', 'logo-memoria-escola.svg'],
+                ['logo-visao-comp', 'logo-visao-computacional.svg'],
+                ['logo-braco-robotico', 'logo-braco-robotico.svg'],
+                ['logo-globins', 'logo-globins.svg'],
+                ['logo-chernobyl', 'logo-chernobyl.svg'],
+                ['logo-tarefas', 'logo-tarefas.svg']
+            ];
+
+            list.forEach(([id, name], index) => {
+                setTimeout(() => downloadSVG(id, name), index * 250);
+            });
+        }
+    </script>
+</body>
+</html>

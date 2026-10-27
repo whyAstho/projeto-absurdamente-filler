@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projetos | Desenvolvimento de Sistemas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#005ec9; --azul-fundo:#004797; --azul-escuro:#06264d;
+  --gelo:#eef5fd; --papel:#ffffff; --texto:#10233f; --suave:#56657d;
+  --linha:#d3e1f3; --destaque:#ffc933;
+  --titulo:'Bricolage Grotesque','Arial Black',Impact,sans-serif;
+  --corpo:'Figtree',Arial,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:96px}
+body{margin:0;background:var(--gelo);color:var(--texto);font-family:var(--corpo);line-height:1.5}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--destaque);outline-offset:3px}
+
+/* Faixa superior */
+.faixa{position:sticky;top:0;z-index:50;height:80px;display:flex;align-items:center;justify-content:center;
+  background:var(--azul);box-shadow:0 4px 12px rgba(0,0,0,.15);padding:0 16px}
+.logo{width:200px;height:auto}
+
+/* Abertura */
+.abertura{background:var(--azul-escuro);color:#fff;padding:56px 6% 64px;position:relative;overflow:hidden}
+.abertura::after{content:"";position:absolute;right:-60px;bottom:-90px;width:340px;height:340px;
+  border:48px solid var(--azul);border-radius:50%;opacity:.55}
+.abertura h1{font-family:var(--titulo);font-weight:800;font-size:clamp(2.2rem,6vw,4.4rem);line-height:1;
+  letter-spacing:-.02em;margin:0 0 16px;max-width:15ch;position:relative;z-index:1}
+.abertura p{margin:0;max-width:52ch;color:#c4d6ee;font-size:1.1rem;position:relative;z-index:1}
+.abertura .total{display:inline-block;margin-top:24px;background:var(--destaque);color:var(--azul-escuro);
+  font-weight:600;padding:6px 14px;border-radius:999px;position:relative;z-index:1}
+
+/* Filtros */
+.filtros{display:flex;flex-wrap:wrap;gap:10px;padding:28px 6% 8px}
+.filtros button{font:inherit;font-weight:500;cursor:pointer;padding:9px 18px;border-radius:999px;
+  border:2px solid var(--azul);background:transparent;color:var(--azul);transition:background .15s,color .15s}
+.filtros button:hover{background:#dbe9fa}
+.filtros button[aria-pressed="true"]{background:var(--azul);color:#fff}
+
+/* Grade */
+.grade{list-style:none;margin:0;padding:20px 6% 72px;display:grid;gap:24px;
+  grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.grade li[hidden]{display:none}
+.card{all:unset;box-sizing:border-box;width:100%;height:100%;display:flex;flex-direction:column;cursor:pointer;
+  background:var(--papel);border-radius:14px;overflow:hidden;border:1px solid var(--linha)}
+.card:focus-visible{outline:3px solid var(--azul);outline-offset:3px}
+.capa{aspect-ratio:16/10;background:var(--azul-fundo);display:grid;place-items:center;overflow:hidden}
+.capa img{width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+.capa span{font-family:var(--titulo);font-weight:800;font-size:3rem;color:#fff}
+.card:hover .capa img{transform:scale(1.06)}
+.card:hover{border-color:var(--azul);box-shadow:0 12px 24px rgba(0,60,130,.18)}
+.info{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.info h3{margin:0;font-family:var(--titulo);font-size:1.25rem;line-height:1.15}
+.info p{margin:0;color:var(--suave);font-size:.95rem;flex:1}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.tags span{font-size:.78rem;font-weight:600;background:var(--gelo);color:var(--azul-fundo);padding:3px 9px;border-radius:6px}
+
+/* Janela de detalhes */
+dialog{border:0;padding:0;background:transparent;width:min(1100px,94vw);max-height:90vh;overflow:visible}
+dialog::backdrop{background:rgba(6,38,77,.72);backdrop-filter:blur(3px)}
+dialog[open]{animation:entra .22s ease-out}
+@keyframes entra{from{opacity:0;transform:translateY(14px) scale(.98)}}
+.painel{display:grid;grid-template-columns:1.5fr 1fr;background:var(--azul-fundo);color:#fff;border-radius:16px;
+  overflow:hidden;max-height:90vh}
+.visual{position:relative;background:#021d3f;display:grid;place-items:center;min-height:300px}
+.visual img{width:100%;max-height:80vh;object-fit:contain;display:block}
+.visual .vazio{padding:40px;text-align:center;color:#9db8dc}
+.nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:0;
+  background:rgba(0,0,0,.6);color:#fff;font-size:1.2rem;cursor:pointer}
+.nav:hover{background:#000}
+.nav[hidden]{display:none}
+#ant{left:12px}#prox{right:12px}
+.contagem{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.6);
+  padding:3px 12px;border-radius:999px;font-size:.85rem}
+.texto{padding:34px 30px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}
+.texto h2{margin:0;font-family:var(--titulo);font-size:1.9rem;line-height:1.1;padding-right:36px}
+.texto p{margin:0;color:#dbe7f7}
+.ficha{margin-top:6px;padding:14px 16px;background:rgba(255,255,255,.09);border-left:4px solid var(--destaque);border-radius:8px;font-size:.95rem}
+.ficha p{margin:0 0 6px;color:#fff}.ficha p:last-child{margin:0}
+.ficha .rotulo{color:#b6cdee}
+.fechar{position:absolute;top:10px;right:12px;z-index:5;width:40px;height:40px;border:0;border-radius:50%;
+  background:transparent;color:#fff;font-size:1.9rem;line-height:1;cursor:pointer}
+.fechar:hover{color:var(--destaque)}
+
+@media (max-width:760px){
+  .painel{grid-template-columns:1fr;overflow-y:auto}
+  .texto{overflow:visible}
+  .abertura::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+</style>
+</head>
+<body>
+
+<header class="faixa">
+  <img class="logo" src="logo.png" alt="SENAI">
+</header>
+
+<main>
+  <section class="abertura">
+    <h1>Projetos das salas de Desenvolvimento de Sistemas</h1>
+    <p>Sites, jogos, inteligência artificial e robótica criados pelos alunos. Escolha um projeto para ver as imagens e as tecnologias usadas.</p>
+    <span class="total" id="total"></span>
+  </section>
+
+  <div class="filtros" id="filtros" role="group" aria-label="Filtrar por tecnologia"></div>
+  <ul class="grade" id="grade"></ul>
+</main>
+
+<dialog id="detalhes" aria-labelledby="dTitulo">
+  <div class="painel">
+    <button class="fechar" id="fechar" aria-label="Fechar">&times;</button>
+    <div class="visual">
+      <button class="nav" id="ant" aria-label="Imagem anterior">&#10094;</button>
+      <img id="dImg" alt="">
+      <div class="vazio" id="dVazio" hidden>Imagem não encontrada</div>
+      <button class="nav" id="prox" aria-label="Próxima imagem">&#10095;</button>
+      <span class="contagem" id="contagem"></span>
+    </div>
+    <div class="texto">
+      <h2 id="dTitulo"></h2>
+      <p id="dDesc"></p>
+      <div class="ficha">
+        <p><span class="rotulo">Tecnologias:</span> <strong id="dTech"></strong></p>
+        <p><span class="rotulo">Status:</span> <strong>Concluído</strong></p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* Todos os projetos ficam aqui. Para adicionar um, basta copiar um bloco. */
+const projetos = [
+  { nome:"Sistema de Demandas", resumo:"Gestão de produtos de serviços.",
+    desc:"Sistema administrativo para organização e acompanhamento de demandas.",
+    tech:["HTML","CSS","JavaScript"], logo:"logo/logo-tarefas.png", fotos:["imagens/fotom1.png","imagens/m1e.png"] },
+  { nome:"Memória Escola", resumo:"Registro pedagógico e comunicação escolar.",
+    desc:"Memória institucional, registro pedagógico e comunicação escolar.",
+    tech:["HTML","CSS","JavaScript","IA"], logo:"logo/logo-memoria-escola.png", fotos:["imagens/fotom2.png"] },
+  { nome:"Chernobyl: 40 Anos Depois", resumo:"Jogo interativo sobre os cuidados e aprendizados do acidente.",
+    desc:"Análise do acidente, impacto e legado técnico e ambiental.",
+    tech:["HTML","CSS","JavaScript"], logo:"logo/logo-chernobyl.png", fotos:["imagens/fotom3.png"] },
+  { nome:"Controle de Jogos com Visão de IA", resumo:"Controle por gestos com IA e processamento em tempo real.",
+    desc:"Jogo interativo com reconhecimento de gestos em tempo real utilizando visão computacional.",
+    tech:["Python","OpenCV","MediaPipe","Pygame"], logo:"logo/logo-visao-computacional.png", fotos:["imagens/fotom4.png"] },
+  { nome:"Ment.IA: Psicologia Digital", resumo:"Psicologia digital, conectando pessoas ao cuidado que importa.",
+    desc:"Plataforma de psicologia digital que une eficiência e humanidade.",
+    tech:["HTML","CSS","JavaScript"], logo:"logo/logo-mentia.png", fotos:["imagens/fotom5.png"] },
+  { nome:"EduCash: Educação e Gestão Financeira", resumo:"Controle financeiro com foco em educação financeira.",
+    desc:"Ensina a lidar com dinheiro na prática enquanto organiza, acompanha e compartilha as finanças.",
+    tech:["HTML","CSS","JavaScript"], logo:"logo/logo-educash.png", fotos:["imagens/fotom6.png"] },
+  { nome:"Goblins: Heart of Ifit", resumo:"Jogo de aventura em 2D feito com HTML, CSS e JavaScript.",
+    desc:"Jogo de aventura e exploração em 2D com visual em pixel art.",
+    tech:["HTML","CSS","JavaScript"], logo:"logo/logo-globins.png", fotos:["imagens/fotom7.png"] },
+  { nome:"Braço Robótico", resumo:"Braço robótico desenvolvido com Arduino.",
+    desc:"Braço robótico desenvolvido com Arduino Mega 2560 e quatro servomotores SG90.",
+    tech:["C++","Arduino IDE"], logo:"logo/logo-braco-robotico.png", fotos:["imagens/fotom8.png"] },
+  { nome:"SafeWork: Segurança Dentro e Fora da Fábrica", resumo:"Sistema para prevenir acidentes em ambientes industriais.",
+    desc:"Sistema para ajudar a prevenir acidentes dentro de ambientes industriais.",
+    tech:["HTML","CSS","JavaScript","Python","Node.js"], logo:"logo/logo-safework.png", fotos:["imagens/fotom9.png"] },
+  { nome:"Sesi Conecta", resumo:"Um chat para aproximar pessoas, compartilhar ideias e organizar projetos.",
+    desc:"Um chat para aproximar pessoas, compartilhar ideias e organizar projetos.",
+    tech:["HTML","CSS","JavaScript"], logo:"logo/logo-sesi-conecta.png", fotos:["imagens/fotom10.png"] }
+];
+
+const grade = document.getElementById('grade');
+const filtros = document.getElementById('filtros');
+const total = document.getElementById('total');
+const dlg = document.getElementById('detalhes');
+const dImg = document.getElementById('dImg'), dVazio = document.getElementById('dVazio');
+const ant = document.getElementById('ant'), prox = document.getElementById('prox');
+const contagem = document.getElementById('contagem');
+
+/* Cards */
+projetos.forEach((p, i) => {
+  const li = document.createElement('li');
+  li.dataset.tech = p.tech.join('|');
+  li.innerHTML = `
+    <button class="card" type="button" aria-label="Ver detalhes de ${p.nome}">
+      <div class="capa"><img src="${p.logo}" alt="" loading="lazy"></div>
+      <div class="info">
+        <h3></h3><p></p><div class="tags"></div>
+      </div>
+    </button>`;
+  li.querySelector('h3').textContent = p.nome.split(':')[0];
+  li.querySelector('p').textContent = p.resumo;
+  p.tech.slice(0,3).forEach(t => {
+    const s = document.createElement('span'); s.textContent = t; li.querySelector('.tags').append(s);
+  });
+  const img = li.querySelector('.capa img');
+  img.onerror = () => { img.replaceWith(Object.assign(document.createElement('span'), {textContent: p.nome[0]})); };
+  li.querySelector('.card').addEventListener('click', () => abrir(i));
+  grade.append(li);
+});
+
+/* Filtros por tecnologia */
+const grupos = [
+  ['Todos', null],
+  ['Web', ['HTML']],
+  ['Python', ['Python']],
+  ['Arduino', ['Arduino IDE']],
+  ['IA', ['IA','MediaPipe','OpenCV']]
+];
+function filtrar(botao, techs) {
+  filtros.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === botao));
+  let visiveis = 0;
+  grade.querySelectorAll('li').forEach(li => {
+    const ok = !techs || techs.some(t => li.dataset.tech.split('|').includes(t));
+    li.hidden = !ok; if (ok) visiveis++;
+  });
+  total.textContent = visiveis + (visiveis === 1 ? ' projeto' : ' projetos');
+}
+grupos.forEach(([nome, techs], i) => {
+  const b = document.createElement('button');
+  b.type = 'button'; b.textContent = nome;
+  b.addEventListener('click', () => filtrar(b, techs));
+  filtros.append(b);
+  if (i === 0) filtrar(b, techs);
+});
+
+/* Janela de detalhes */
+let atual = null, indice = 0;
+function mostrarFoto() {
+  const fotos = projetos[atual].fotos;
+  dImg.hidden = false; dVazio.hidden = true;
+  dImg.src = fotos[indice];
+  dImg.alt = `${projetos[atual].nome}, imagem ${indice + 1} de ${fotos.length}`;
+  contagem.textContent = `${indice + 1} / ${fotos.length}`;
+  const varias = fotos.length > 1;
+  ant.hidden = prox.hidden = contagem.hidden = !varias;
+}
+dImg.onerror = () => { dImg.hidden = true; dVazio.hidden = false; };
+function abrir(i) {
+  atual = i; indice = 0;
+  const p = projetos[i];
+  document.getElementById('dTitulo').textContent = p.nome;
+  document.getElementById('dDesc').textContent = p.desc;
+  document.getElementById('dTech').textContent = p.tech.join(', ');
+  mostrarFoto();
+  dlg.showModal();
+}
+function passar(d) {
+  const n = projetos[atual].fotos.length;
+  indice = (indice + d + n) % n; mostrarFoto();
+}
+ant.addEventListener('click', () => passar(-1));
+prox.addEventListener('click', () => passar(1));
+document.getElementById('fechar').addEventListener('click', () => dlg.close());
+dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') passar(-1);
+  if (e.key === 'ArrowRight') passar(1);
+});
+</script>
+</body>
+</html>

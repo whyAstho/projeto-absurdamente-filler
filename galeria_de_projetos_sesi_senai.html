@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo SESI SENAI | Galeria de Projetos</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        sesi: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0066cc',
+                            600: '#005ec9',
+                            700: '#004797',
+                            800: '#003778',
+                            900: '#002654',
+                        },
+                        accent: {
+                            cyan: '#06b6d4',
+                            teal: '#14b8a6',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Modern styling enhancements */
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        /* Glassmorphism Header */
+        .glass-header {
+            background: rgba(0, 94, 201, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Custom Scrollbar for dynamic feed */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom Modal Scrollbar */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        /* 3D Tilt Card Effects */
+        .project-card {
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .project-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 30px -10px rgba(0, 71, 151, 0.35);
+        }
+
+        /* Shimmer Banner Gradient */
+        .bg-shimmer {
+            background: linear-gradient(90deg, #004797 0%, #0066cc 50%, #004797 100%);
+            background-size: 200% 100%;
+            animation: shimmer 6s infinite ease-in-out;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 antialiased selection:bg-sesi-500 selection:text-white pb-16">
+
+    <!-- 1. CABEÇALHO FIXO (GLASSMORPHISM NAVBAR) -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-header shadow-lg transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-center">
+            <!-- Centered Logo Brand -->
+            <a href="#" class="group flex items-center gap-3 focus:outline-none" aria-label="SESI SENAI Home">
+                <div class="bg-white p-2 rounded-xl shadow-md group-hover:scale-105 transition-transform duration-300">
+                    <svg class="h-7 w-auto text-sesi-700 fill-current" viewBox="0 0 200 50">
+                        <!-- Simulated SESI SENAI Iconography -->
+                        <path d="M10 10h30v8H18v6h18v8H18v8h22v8H10V10zM50 10h30v8H58v6h18v8H58v14H50V10zM90 10h10v30H90V10z"/>
+                        <circle cx="115" cy="25" r="15" class="fill-accent-cyan"/>
+                        <text x="138" y="32" font-weight="900" font-size="20" font-family="Outfit, sans-serif" fill="#004797">SESI</text>
+                    </svg>
+                </div>
+                <div class="flex flex-col text-left">
+                    <span class="font-display font-extrabold text-white text-lg sm:text-xl tracking-wider uppercase leading-none">
+                        MUNDO <span class="text-accent-cyan">SESI SENAI</span>
+                    </span>
+                    <span class="text-xs text-blue-100 font-medium tracking-widest uppercase mt-0.5">
+                        Desenvolvimento de Sistemas
+                    </span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="pt-28 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        <!-- 2. HERO SECTION & SEARCH/FILTERS -->
+        <section class="mt-6 mb-10 text-center">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 text-sesi-800 text-xs font-semibold tracking-wide uppercase mb-4 shadow-sm border border-blue-200">
+                <span class="w-2 h-2 rounded-full bg-accent-teal animate-pulse"></span>
+                Mostra de Inovação & Tecnologia
+            </div>
+
+            <h1 class="font-display text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                Projetos de <span class="text-transparent bg-clip-text bg-gradient-to-r from-sesi-600 via-sesi-700 to-accent-cyan">Desenvolvimento de Sistemas</span>
+            </h1>
+
+            <p class="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-slate-600 leading-relaxed">
+                Conheça os projetos criados por estudantes do SESI SENAI. Inovação em software, Inteligência Artificial, Jogos 2D/3D e automação de hardware.
+            </p>
+
+            <!-- Search Bar & Filters -->
+            <div class="mt-8 max-w-3xl mx-auto space-y-4">
+                <!-- Search Box -->
+                <div class="relative shadow-sm rounded-2xl">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-slate-400">
+                        <i class="fas me-2 fa-search text-lg"></i>
+                    </div>
+                    <input type="text" id="searchInput" 
+                        placeholder="Pesquisar por nome do projeto ou tecnologia (ex: Python, IA, C++, HTML)..." 
+                        class="w-full pl-11 pr-10 py-3.5 bg-white rounded-2xl border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sesi-500 focus:border-transparent transition-all text-sm sm:text-base shadow-sm">
+                    <button id="clearSearch" class="hidden absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600">
+                        <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
+
+                <!-- Category Filters (Tags) -->
+                <div class="flex items-center justify-center gap-2 flex-wrap text-xs sm:text-sm pt-2" id="filterTags">
+                    <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl font-medium transition-all bg-sesi-600 text-white shadow-md shadow-sesi-600/30">
+                        Todos os Projetos
+                    </button>
+                    <button data-filter="hardware" class="filter-btn px-4 py-2 rounded-xl font-medium transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">
+                        <i class="fas fa-microchip me-1.5 text-orange-500"></i>C++ / Hardware
+                    </button>
+                    <button data-filter="ai" class="filter-btn px-4 py-2 rounded-xl font-medium transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">
+                        <i class="fas fa-robot me-1.5 text-purple-500"></i>Python & IA
+                    </button>
+                    <button data-filter="web" class="filter-btn px-4 py-2 rounded-xl font-medium transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">
+                        <i class="fas fa-code me-1.5 text-blue-500"></i>Web Frontend
+                    </button>
+                    <button data-filter="system" class="filter-btn px-4 py-2 rounded-xl font-medium transition-all bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">
+                        <i class="fas fa-tasks me-1.5 text-emerald-500"></i>Sistemas de Gestão
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CAROUSEL AUTO-SCROLL CONTROL BAR -->
+        <div class="flex items-center justify-between mb-4 px-2">
+            <div class="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                Carrossel Infinito Ativo
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="pauseCarouselBtn" class="px-3 py-1.5 text-xs font-medium rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors shadow-sm flex items-center gap-1.5">
+                    <i class="fas fa-pause text-xs" id="pauseIcon"></i>
+                    <span id="pauseText">Pausar</span>
+                </button>
+                <button id="scrollLeftBtn" class="p-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button id="scrollRightBtn" class="p-2 rounded-lg bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. CARROSSEL & GRID INTERATIVO DE PROJETOS -->
+        <div class="relative">
+            <!-- Carousel Container -->
+            <div id="projectsContainer" class="fundo-p1 flex gap-6 overflow-x-auto py-4 px-1 no-scrollbar scroll-smooth">
+                <!-- Project cards will be dynamically rendered here via JavaScript -->
+            </div>
+        </div>
+
+        <!-- Empty state message (Hidden by default) -->
+        <div id="noResults" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200 shadow-sm mt-4">
+            <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto text-2xl mb-4">
+                <i class="fas fa-folder-open"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">Nenhum projeto encontrado</h3>
+            <p class="text-sm text-slate-500 mt-1">Tente pesquisar com outros termos ou selecione uma categoria diferente.</p>
+        </div>
+    </main>
+
+    <!-- 4. MODAL DETALHADO COM CARROSSEL INTERNO -->
+    <div id="modalDet" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-md transition-opacity duration-300">
+        <div class="relative w-full max-w-4xl bg-sesi-800 text-white rounded-3xl shadow-2xl overflow-hidden border border-white/10 max-h-[90vh] flex flex-col md:flex-row transform transition-all scale-95 opacity-0" id="modalBox">
+            
+            <!-- Close Button -->
+            <button id="fecharModal" class="absolute top-4 right-4 z-20 w-10 h-10 bg-slate-900/60 hover:bg-red-500/80 text-white rounded-full flex items-center justify-center transition-all focus:outline-none shadow-md" aria-label="Fechar Modal">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+
+            <!-- Column Left: Image Carousel -->
+            <div class="relative flex-1 bg-slate-950/60 min-h-[260px] md:min-h-[420px] flex items-center justify-center p-4">
+                <!-- Carousel Nav Arrows -->
+                <button id="atAnterior" class="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black/50 hover:bg-sesi-500 text-white rounded-full flex items-center justify-center transition-all focus:outline-none border border-white/10">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                
+                <!-- Main Modal Image Display -->
+                <div class="w-full h-full flex items-center justify-center overflow-hidden rounded-2xl">
+                    <img id="modalImagem" src="" alt="Foto do projeto" class="max-h-[380px] w-auto object-contain rounded-xl shadow-lg transition-all duration-300">
+                </div>
+
+                <button id="atProximo" class="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-black/50 hover:bg-sesi-500 text-white rounded-full flex items-center justify-center transition-all focus:outline-none border border-white/10">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+
+                <!-- Image Indicator Dots -->
+                <div id="carouselDots" class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+                    <!-- Dynamic dots -->
+                </div>
+            </div>
+
+            <!-- Column Right: Details & Info -->
+            <div class="flex-1 p-6 md:p-8 flex flex-col justify-between overflow-y-auto custom-scrollbar">
+                <div>
+                    <!-- Status Badge -->
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-semibold rounded-full flex items-center gap-1.5">
+                            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Status: Concluído
+                        </span>
+                        <span id="modalCategoryTag" class="px-3 py-1 bg-blue-500/20 text-accent-cyan border border-accent-cyan/30 text-xs font-semibold rounded-full">
+                            Tecnologia
+                        </span>
+                    </div>
+
+                    <!-- Title & Description -->
+                    <h2 id="modalTitulo" class="font-display text-2xl md:text-3xl font-bold text-white mb-3 leading-snug"></h2>
+                    <p id="modalDescricao" class="text-slate-300 text-sm md:text-base leading-relaxed mb-6"></p>
+
+                    <!-- Tech Details Card -->
+                    <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-3">
+                        <h4 class="text-xs font-bold uppercase tracking-wider text-accent-cyan flex items-center gap-2">
+                            <i class="fas fa-layer-group"></i> Tecnologias Utilizadas
+                        </h4>
+                        <div id="modalTechBadges" class="flex flex-wrap gap-2">
+                            <!-- Dynamic Badges -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-400">
+                    <span><i class="fas fa-graduation-cap me-1.5"></i>Mundo SESI SENAI</span>
+                    <span><i class="fas fa-code-branch me-1.5"></i>Desenvolvimento de Sistemas</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        // Project Data Source (10 Projects with detailed info and SVG image generation placeholders)
+        const projectsData = [
+            {
+                id: 1,
+                title: "Sistema de Demandas",
+                shortDesc: "Gestão completa de tarefas e chamados de serviços em tempo real.",
+                fullDesc: "Sistema administrativo projetado para organizar, distribuir e acompanhar o fluxo de trabalho e atendimento de solicitações de serviços institucionais.",
+                techs: ["HTML", "CSS", "JavaScript", "Node.js"],
+                category: "system",
+                bgGradient: "from-blue-600 to-indigo-800",
+                icon: "fa-tasks",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23004797'/><rect x='40' y='40' width='520' height='320' rx='16' fill='%23002654'/><rect x='70' y='70' width='140' height='260' rx='12' fill='%23005ec9'/><rect x='230' y='70' width='140' height='180' rx='12' fill='%230066cc'/><rect x='390' y='70' width='140' height='220' rx='12' fill='%2306b6d4'/><text x='300' y='360' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='20'>Sistema de Demandas - Kanban</text></svg>",
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23002654'/><circle cx='300' cy='200' r='100' fill='%23005ec9'/><text x='300' y='205' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18'>Métricas & Relatórios</text></svg>"
+                ]
+            },
+            {
+                id: 2,
+                title: "Memória Escola",
+                shortDesc: "Registro pedagógico, acervo histórico e comunicação institucional.",
+                fullDesc: "Plataforma web para acervo digital da memória da escola, permitindo a alunos e professores registrar projetos pedagógicos e conquistas históricas.",
+                techs: ["HTML", "CSS", "JavaScript", "IA"],
+                category: "ai",
+                bgGradient: "from-cyan-600 to-blue-900",
+                icon: "fa-book-open",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%230f172a'/><rect x='60' y='50' width='480' height='300' rx='20' fill='%231e293b'/><circle cx='200' cy='180' r='50' fill='%2306b6d4'/><rect x='280' y='140' width='220' height='20' rx='6' fill='%2338bdf8'/><rect x='280' y='175' width='160' height='15' rx='6' fill='%2394a3b8'/><text x='300' y='320' text-anchor='middle' fill='white' font-family='sans-serif' font-size='18'>Memória Escola - Digital Vault</text></svg>"
+                ]
+            },
+            {
+                id: 3,
+                title: "Chernobyl: 40 Anos",
+                shortDesc: "Jogo educativo interativo e infográfico histórico completo.",
+                fullDesc: "Aplicação interativa no formato de jogo pedagógico focado nos aprendizados técnicos, físicos e de segurança nuclear derivados do acidente de Chernobyl.",
+                techs: ["HTML", "CSS", "JavaScript"],
+                category: "web",
+                bgGradient: "from-amber-600 to-slate-900",
+                icon: "fa-atom",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%2318181b'/><polygon points='300,80 480,320 120,320' fill='%23d97706'/><circle cx='300' cy='240' r='35' fill='%2318181b'/><text x='300' y='370' text-anchor='middle' fill='%23fbbf24' font-family='sans-serif' font-weight='bold' font-size='18'>Chernobyl: Aprendizados & Física</text></svg>"
+                ]
+            },
+            {
+                id: 4,
+                title: "Projeto CJVC",
+                shortDesc: "Controle de Jogos por gestos em tempo real com Visão Computacional.",
+                fullDesc: "Sistema avançado que integra visão por computador e IA para mapeamento de gestos das mãos, permitindo controlar jogos sem necessidade de teclado ou mouse.",
+                techs: ["Python", "OpenCV", "MediaPipe", "Pygame"],
+                category: "ai",
+                bgGradient: "from-purple-700 to-indigo-950",
+                icon: "fa-eye",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23311b92'/><circle cx='200' cy='200' r='80' stroke='%23a855f7' stroke-width='6' fill='none'/><circle cx='400' cy='200' r='80' stroke='%23a855f7' stroke-width='6' fill='none'/><path d='M180 200 L220 200 M200 180 L200 220' stroke='%2306b6d4' stroke-width='4'/><text x='300' y='340' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'>OpenCV & MediaPipe Tracking</text></svg>",
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%231e1b4b'/><rect x='100' y='100' width='400' height='200' rx='16' fill='%234338ca'/><text x='300' y='210' text-anchor='middle' fill='white' font-family='sans-serif' font-size='20'>Pygame Integration Engine</text></svg>"
+                ]
+            },
+            {
+                id: 5,
+                title: "Ment.IA",
+                shortDesc: "Plataforma de psicologia digital humanizada conectando pacientes.",
+                fullDesc: "Aplicação moderna focada em saúde mental e psicologia digital. Une inteligência para triagem de dados e ambiente seguro para apoio emocional.",
+                techs: ["HTML", "CSS", "JavaScript"],
+                category: "web",
+                bgGradient: "from-teal-600 to-emerald-900",
+                icon: "fa-brain",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23064e3b'/><circle cx='300' cy='180' r='70' fill='%2310b981'/><path d='M250 260 Q300 310 350 260' stroke='white' stroke-width='6' fill='none'/><text x='300' y='350' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='20'>Ment.IA Health Portal</text></svg>"
+                ]
+            },
+            {
+                id: 6,
+                title: "EduCash",
+                shortDesc: "Plataforma de controle e educação financeira interativa.",
+                fullDesc: "Software de controle financeiro pessoal e escolar. Ensina a lidar com orçamentos, investimentos e metas financeiras de forma intuitiva.",
+                techs: ["HTML", "CSS", "JavaScript"],
+                category: "system",
+                bgGradient: "from-emerald-600 to-teal-950",
+                icon: "fa-wallet",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23022c22'/><rect x='80' y='80' width='440' height='240' rx='16' fill='%23059669'/><path d='M120 260 L200 180 L280 220 L400 120' stroke='%2334d399' stroke-width='8' fill='none'/><text x='300' y='360' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'>EduCash Dashboard</text></svg>"
+                ]
+            },
+            {
+                id: 7,
+                title: "Goblins: Heart of Ifit",
+                shortDesc: "Jogo 2D Pixel Art repleto de aventura, ação e exploração.",
+                fullDesc: "Jogo de plataforma 2D desenvolvido com lógica pura web. Conta com gráficos estilizados em Pixel Art, sistema de vida e física customizada.",
+                techs: ["HTML", "CSS", "JavaScript"],
+                category: "web",
+                bgGradient: "from-rose-600 to-slate-900",
+                icon: "fa-gamepad",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%234c0519'/><rect x='100' y='250' width='400' height='80' fill='%239f1239'/><rect x='280' y='190' width='40' height='60' fill='%23fbbf24'/><text x='300' y='360' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'>Goblins Engine 2D</text></svg>"
+                ]
+            },
+            {
+                id: 8,
+                title: "Braço Robótico",
+                shortDesc: "Robô manipulador com Arduino Mega 2560 e 4 servomotores.",
+                fullDesc: "Projeto de robótica que integra automação de hardware e código em C++. Permite movimentação precisa através de potenciômetros ou comandos de código.",
+                techs: ["C++", "Arduino IDE"],
+                category: "hardware",
+                bgGradient: "from-orange-600 to-slate-900",
+                icon: "fa-robot",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23431407'/><path d='M300 320 L300 200 L380 140 L420 160' stroke='%23ea580c' stroke-width='16' stroke-linecap='round' fill='none'/><circle cx='300' cy='320' r='24' fill='%23fdba74'/><text x='300' y='370' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'>Braço Robótico - Arduino Servo Control</text></svg>"
+                ]
+            },
+            {
+                id: 9,
+                title: "SafeWork",
+                shortDesc: "Prevenção de acidentes de trabalho em ambientes industriais.",
+                fullDesc: "Sistema de monitoramento e alertas para a segurança no trabalho. Auxilia no uso correto de EPIs e prevenção de áreas de risco em indústrias.",
+                techs: ["HTML", "CSS", "JavaScript", "Python"],
+                category: "system",
+                bgGradient: "from-yellow-600 to-slate-900",
+                icon: "fa-hard-hat",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%23451a03'/><polygon points='300,90 500,310 100,310' fill='%23ca8a04'/><text x='300' y='250' font-size='60' text-anchor='middle' fill='white'>!</text><text x='300' y='360' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'>SafeWork Industrial Monitor</text></svg>"
+                ]
+            },
+            {
+                id: 10,
+                title: "SESI Conecta",
+                shortDesc: "Chat corporativo e escolar com comunicação em tempo real.",
+                fullDesc: "Rede de comunicação com WebSockets para troca de mensagens instantâneas, salas de estudos e compartilhamento de arquivos entre alunos e professores.",
+                techs: ["HTML", "CSS", "JavaScript", "WebSockets"],
+                category: "system",
+                bgGradient: "from-blue-700 to-sky-900",
+                icon: "fa-comments",
+                images: [
+                    "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'><rect width='600' height='400' fill='%230c4a6e'/><rect x='100' y='80' width='280' height='140' rx='16' fill='%230284c7'/><rect x='220' y='180' width='280' height='140' rx='16' fill='%2338bdf8'/><text x='300' y='360' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold' font-size='18'>SESI Conecta WebSocket Chat</text></svg>"
+                ]
+            }
+        ];
+
+        // Global DOM Elements
+        const container = document.getElementById('projectsContainer');
+        const searchInput = document.getElementById('searchInput');
+        const clearSearchBtn = document.getElementById('clearSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const noResults = document.getElementById('noResults');
+
+        // Modal Elements
+        const modal = document.getElementById('modalDet');
+        const modalBox = document.getElementById('modalBox');
+        const btnFechar = document.getElementById('fecharModal');
+        const modalImagem = document.getElementById('modalImagem');
+        const modalTitulo = document.getElementById('modalTitulo');
+        const modalDescricao = document.getElementById('modalDescricao');
+        const modalTechBadges = document.getElementById('modalTechBadges');
+        const modalCategoryTag = document.getElementById('modalCategoryTag');
+        const carouselDots = document.getElementById('carouselDots');
+        const atAnterior = document.getElementById('atAnterior');
+        const atProximo = document.getElementById('atProximo');
+
+        // Carousel Controls
+        const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+        const scrollRightBtn = document.getElementById('scrollRightBtn');
+        const pauseCarouselBtn = document.getElementById('pauseCarouselBtn');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const pauseText = document.getElementById('pauseText');
+
+        // State Variables
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let modalImageList = [];
+        let modalImageIndex = 0;
+        let autoScrollActive = true;
+        let isHovered = false;
+        let animationFrameId = null;
+
+        // Render Projects Function
+        function renderProjects() {
+            container.innerHTML = '';
+            
+            const filtered = projectsData.filter(project => {
+                const matchesFilter = currentFilter === 'all' || project.category === currentFilter;
+                const matchesSearch = project.title.toLowerCase().includes(searchQuery) || 
+                                      project.shortDesc.toLowerCase().includes(searchQuery) ||
+                                      project.techs.some(t => t.toLowerCase().includes(searchQuery));
+                return matchesFilter && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+
+            filtered.forEach(project => {
+                const card = document.createElement('div');
+                card.className = `project-card flex-shrink-0 w-[290px] sm:w-[320px] bg-white rounded-2xl shadow-md hover:shadow-xl border border-slate-200/80 overflow-hidden cursor-pointer flex flex-col justify-between group`;
+                card.setAttribute('data-id', project.id);
+
+                card.innerHTML = `
+                    <div>
+                        <!-- Card Banner Image Container -->
+                        <div class="relative h-44 bg-gradient-to-r ${project.bgGradient} overflow-hidden flex items-center justify-center p-4">
+                            <img src="${project.images[0]}" alt="${project.title}" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500">
+                            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                            
+                            <!-- Main Icon Overlay -->
+                            <div class="absolute top-3 left-3 w-10 h-10 rounded-xl bg-white/20 backdrop-blur-md border border-white/30 text-white flex items-center justify-center text-lg shadow-sm">
+                                <i class="fas ${project.icon}"></i>
+                            </div>
+
+                            <!-- Image Count Badge -->
+                            ${project.images.length > 1 ? `
+                                <div class="absolute bottom-3 right-3 px-2 py-1 bg-black/60 backdrop-blur-md rounded-md text-[10px] text-white font-medium flex items-center gap-1">
+                                    <i class="fas fa-images"></i> ${project.images.length}
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        <!-- Card Body -->
+                        <div class="p-5">
+                            <h3 class="font-display font-bold text-lg text-slate-800 group-hover:text-sesi-600 transition-colors mb-2">
+                                ${project.title}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-slate-600 line-clamp-2 leading-relaxed mb-4">
+                                ${project.shortDesc}
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card Footer -->
+                    <div class="px-5 pb-5 pt-0">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${project.techs.map(tech => `
+                                <span class="px-2.5 py-1 bg-slate-100 text-slate-700 text-[11px] font-semibold rounded-md border border-slate-200">
+                                    ${tech}
+                                </span>
+                            `).join('')}
+                        </div>
+                        <button class="w-full py-2.5 bg-sesi-50 group-hover:bg-sesi-600 text-sesi-700 group-hover:text-white rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-2">
+                            <span>Ver Detalhes</span>
+                            <i class="fas fa-arrow-right text-[10px] group-hover:translate-x-1 transition-transform"></i>
+                        </button>
+                    </div>
+                `;
+
+                // Add Click Event for Modal
+                card.addEventListener('click', () => openModal(project));
+                container.appendChild(card);
+            });
+        }
+
+        // Auto-Scroll Logic for Carousel
+        function autoScrollLoop() {
+            if (autoScrollActive && !isHovered && container.scrollWidth > container.clientWidth) {
+                container.scrollLeft += 1;
+                if (container.scrollLeft >= (container.scrollWidth - container.clientWidth - 2)) {
+                    container.scrollLeft = 0;
+                }
+            }
+            animationFrameId = requestAnimationFrame(autoScrollLoop);
+        }
+
+        // Event Listeners for Filters & Search
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-sesi-600', 'text-white', 'shadow-md', 'shadow-sesi-600/30');
+                    b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+                });
+                btn.classList.add('active', 'bg-sesi-600', 'text-white', 'shadow-md', 'shadow-sesi-600/30');
+                btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+
+                currentFilter = btn.getAttribute('data-filter');
+                renderProjects();
+            });
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            if (searchQuery.length > 0) {
+                clearSearchBtn.classList.remove('hidden');
+            } else {
+                clearSearchBtn.classList.add('hidden');
+            }
+            renderProjects();
+        });
+
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            searchQuery = '';
+            clearSearchBtn.classList.add('hidden');
+            renderProjects();
+        });
+
+        // Carousel Manual Control Listeners
+        scrollLeftBtn.addEventListener('click', () => {
+            container.scrollBy({ left: -320, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            container.scrollBy({ left: 320, behavior: 'smooth' });
+        });
+
+        pauseCarouselBtn.addEventListener('click', () => {
+            autoScrollActive = !autoScrollActive;
+            if (autoScrollActive) {
+                pauseIcon.className = "fas fa-pause text-xs";
+                pauseText.textContent = "Pausar";
+            } else {
+                pauseIcon.className = "fas fa-play text-xs";
+                pauseText.textContent = "Continuar";
+            }
+        });
+
+        container.addEventListener('mouseenter', () => isHovered = true);
+        container.addEventListener('mouseleave', () => isHovered = false);
+
+        // MODAL LOGIC
+        function openModal(project) {
+            isHovered = true; // Pause scrolling while modal is open
+            modalImageList = project.images;
+            modalImageIndex = 0;
+
+            modalTitulo.textContent = project.title;
+            modalDescricao.textContent = project.fullDesc;
+            modalCategoryTag.textContent = project.category.toUpperCase();
+
+            // Populate Badges
+            modalTechBadges.innerHTML = project.techs.map(tech => `
+                <span class="px-3 py-1 bg-white/10 text-white text-xs font-semibold rounded-lg border border-white/10">
+                    ${tech}
+                </span>
+            `).join('');
+
+            updateModalCarousel();
+
+            // Show Modal with Animation
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modalBox.classList.remove('scale-95', 'opacity-0');
+                modalBox.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function updateModalCarousel() {
+            modalImagem.src = modalImageList[modalImageIndex];
+
+            // Render Dots
+            carouselDots.innerHTML = modalImageList.map((_, idx) => `
+                <span class="w-2.5 h-2.5 rounded-full transition-all ${idx === modalImageIndex ? 'bg-accent-cyan w-5' : 'bg-white/40'}"></span>
+            `).join('');
+
+            // Hide/Show Arrow Buttons if only 1 image
+            if (modalImageList.length <= 1) {
+                atAnterior.classList.add('hidden');
+                atProximo.classList.add('hidden');
+            } else {
+                atAnterior.classList.remove('hidden');
+                atProximo.classList.remove('hidden');
+            }
+        }
+
+        function closeModal() {
+            modalBox.classList.remove('scale-100', 'opacity-100');
+            modalBox.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                isHovered = false;
+            }, 200);
+        }
+
+        // Modal Carousel Nav
+        atProximo.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (modalImageList.length > 0) {
+                modalImageIndex = (modalImageIndex + 1) % modalImageList.length;
+                updateModalCarousel();
+            }
+        });
+
+        atAnterior.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (modalImageList.length > 0) {
+                modalImageIndex = (modalImageIndex - 1 + modalImageList.length) % modalImageList.length;
+                updateModalCarousel();
+            }
+        });
+
+        btnFechar.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // Initialize App
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+            requestAnimationFrame(autoScrollLoop);
+        });
+    </script>
+</body>
+</html>
